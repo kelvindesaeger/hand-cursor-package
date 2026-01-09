@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { HandLandmarker, FilesetResolver } from "@mediapipe/tasks-vision";
 
 /** Helpers */
+import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
 export function isPinching(landmarks) {
   if (!landmarks || landmarks.length < 9) return false;
   var thumb = landmarks[4];
@@ -131,28 +132,30 @@ export default function HandCursor(_ref) {
     }
     init();
   }, [videoRef, smoothing, scrollSensitivity]);
-  return /*#__PURE__*/React.createElement(React.Fragment, null, !videoRef && /*#__PURE__*/React.createElement("video", {
-    ref: defaultVideoRef,
-    autoPlay: true,
-    playsInline: true,
-    style: {
-      position: "fixed",
-      bottom: 10,
-      right: 10,
-      width: 160,
-      transform: "scaleX(-1)",
-      zIndex: 1000
-    }
-  }), /*#__PURE__*/React.createElement("div", {
-    ref: cursorRef,
-    style: {
-      position: "fixed",
-      width: 16,
-      height: 16,
-      background: "red",
-      borderRadius: "50%",
-      pointerEvents: "none",
-      zIndex: 999999
-    }
-  }));
+  return /*#__PURE__*/_jsxs(_Fragment, {
+    children: [!videoRef && /*#__PURE__*/_jsx("video", {
+      ref: defaultVideoRef,
+      autoPlay: true,
+      playsInline: true,
+      style: {
+        position: "fixed",
+        bottom: 10,
+        right: 10,
+        width: 160,
+        transform: "scaleX(-1)",
+        zIndex: 1000
+      }
+    }), /*#__PURE__*/_jsx("div", {
+      ref: cursorRef,
+      style: {
+        position: "fixed",
+        width: 16,
+        height: 16,
+        background: "red",
+        borderRadius: "50%",
+        pointerEvents: "none",
+        zIndex: 999999
+      }
+    })]
+  });
 }
