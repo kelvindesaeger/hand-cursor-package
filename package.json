@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "React hand gesture cursor component using MediaPipe",
   "main": "dist/index.js",
+  "types": "index.d.ts",
   "type": "module",
   "scripts": {
     "build": "babel src --out-dir dist --extensions \".js,.jsx\"",
