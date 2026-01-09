@@ -1,9 +1,9 @@
 {
   "presets": [
-    ["@babel/preset-env", { "modules": "auto" }],
-    ["@babel/preset-react"]
+    ["@babel/preset-env", { "modules": false }], // <-- important, keeps ES modules
+    "@babel/preset-react"
   ],
   "plugins": [
-    ["@babel/plugin-transform-runtime"]
+    "@babel/plugin-transform-runtime"
   ]
 }

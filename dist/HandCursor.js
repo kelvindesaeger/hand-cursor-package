@@ -1,18 +1,10 @@
-"use strict";
+import _asyncToGenerator from "@babel/runtime/helpers/asyncToGenerator";
+import _regeneratorRuntime from "@babel/runtime/regenerator";
+import { useEffect, useRef } from "react";
+import { HandLandmarker, FilesetResolver } from "@mediapipe/tasks-vision";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.clickAt = clickAt;
-exports["default"] = HandCursor;
-exports.isPinching = isPinching;
-var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
-var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
-var _react = require("react");
-var _tasksVision = require("@mediapipe/tasks-vision");
 /** Helpers */
-function isPinching(landmarks) {
+export function isPinching(landmarks) {
   if (!landmarks || landmarks.length < 9) return false;
   var thumb = landmarks[4];
   var index = landmarks[8];
@@ -20,7 +12,7 @@ function isPinching(landmarks) {
   var dy = thumb.y - index.y;
   return Math.sqrt(dx * dx + dy * dy) < 0.04;
 }
-function clickAt(x, y) {
+export function clickAt(x, y) {
   var el = document.elementFromPoint(x, y);
   if (!el) return;
   el.dispatchEvent(new MouseEvent("click", {
@@ -31,15 +23,15 @@ function clickAt(x, y) {
 }
 
 /** React component */
-function HandCursor(_ref) {
+export default function HandCursor(_ref) {
   var videoRef = _ref.videoRef,
     _ref$smoothing = _ref.smoothing,
     smoothing = _ref$smoothing === void 0 ? 0.8 : _ref$smoothing,
     _ref$scrollSensitivit = _ref.scrollSensitivity,
     scrollSensitivity = _ref$scrollSensitivit === void 0 ? 1 : _ref$scrollSensitivit;
-  var defaultVideoRef = (0, _react.useRef)(null);
-  var cursorRef = (0, _react.useRef)(null);
-  (0, _react.useEffect)(function () {
+  var defaultVideoRef = useRef(null);
+  var cursorRef = useRef(null);
+  useEffect(function () {
     var video = (videoRef === null || videoRef === void 0 ? void 0 : videoRef.current) || defaultVideoRef.current;
     var cursor = cursorRef.current;
     if (!video || !cursor) return;
@@ -56,9 +48,9 @@ function HandCursor(_ref) {
       return _init.apply(this, arguments);
     }
     function _init() {
-      _init = (0, _asyncToGenerator2["default"])(/*#__PURE__*/_regenerator["default"].mark(function _callee() {
+      _init = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime.mark(function _callee() {
         var stream, vision;
-        return _regenerator["default"].wrap(function (_context) {
+        return _regeneratorRuntime.wrap(function (_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
               _context.next = 1;
@@ -69,11 +61,11 @@ function HandCursor(_ref) {
               stream = _context.sent;
               video.srcObject = stream;
               _context.next = 2;
-              return _tasksVision.FilesetResolver.forVisionTasks("https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/wasm");
+              return FilesetResolver.forVisionTasks("https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/wasm");
             case 2:
               vision = _context.sent;
               _context.next = 3;
-              return _tasksVision.HandLandmarker.createFromOptions(vision, {
+              return HandLandmarker.createFromOptions(vision, {
                 baseOptions: {
                   modelAssetPath: "https://storage.googleapis.com/mediapipe-assets/hand_landmarker.task",
                   delegate: "GPU"
@@ -96,9 +88,9 @@ function HandCursor(_ref) {
       return _loop.apply(this, arguments);
     }
     function _loop() {
-      _loop = (0, _asyncToGenerator2["default"])(/*#__PURE__*/_regenerator["default"].mark(function _callee2() {
+      _loop = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime.mark(function _callee2() {
         var results, landmarks, indexTip, targetX, targetY, pinching, deltaY;
-        return _regenerator["default"].wrap(function (_context2) {
+        return _regeneratorRuntime.wrap(function (_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 1;
