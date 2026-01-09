@@ -1,0 +1,24 @@
+{
+  "name": "hand-cursor",
+  "version": "1.0.0",
+  "description": "React hand gesture cursor component using MediaPipe",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "babel src --out-dir dist --extensions \".js,.jsx\"",
+    "prepare": "npm run build"
+  },
+  "keywords": ["react", "hand-tracking", "mediapipe", "cursor", "pinch", "gesture"],
+  "author": "Your Name",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.24.0",
+    "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
+    "@babel/preset-react": "^7.24.0"
+  }
+}
