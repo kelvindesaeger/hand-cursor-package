@@ -7,9 +7,9 @@
   "types": "index.d.ts",
   "type": "module",
   "scripts": {
-    "build": "npx babel src --out-dir dist --extensions \".js,.jsx\" --copy-files",
+    "build": "babel src --out-dir dist --extensions \".js,.jsx\" --copy-files --ignore \"**/*.d.ts\"",
     "prepare": "npm run build"
-  },
+},
   "keywords": [
     "react",
     "hand-tracking",

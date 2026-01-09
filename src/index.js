@@ -1,3 +1,5 @@
 // src/index.js
-export { default as HandCursor } from "./HandCursor.jsx";
-export * from "./HandCursor.jsx"; // exports isPinching and clickAt
+import HandCursor, { isPinching, clickAt } from "./HandCursor.js";
+
+export { HandCursor, isPinching, clickAt };
+export default HandCursor;
